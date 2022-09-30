@@ -14,6 +14,7 @@ for i=1:length(fm_vec)
     rng(12);
     main_sim = Simulation(sim);
     main_sim.fm = fm_vec(i);
+    main_sim.fmux = main_sim.fm;
     
     fprintf('Simulating %.1f-GHz spacing ...\n', fm_vec(i)/1e9);
     
