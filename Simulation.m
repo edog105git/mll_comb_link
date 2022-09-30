@@ -9,7 +9,8 @@ classdef Simulation
         t             % simulation time vector
         f             % simulation frequency vector
         SNR           % SNR per symbol
-        fm            % channel and AWG spacing
+        fm            % channel spacing
+        fmux          % multiplexer 3dB bandwidth
         % Signal parameters
         b_n           % 3xNsymb unencoded data stream (b_n(2, :) - channel 0 data)
         x_n           % 3xNsymb encoded data stream
@@ -42,7 +43,7 @@ classdef Simulation
         end
 
         function obj = mux(obj)
-            MuxFilter = AnalogFilter('super-gaussian', 3, obj.fm);
+            MuxFilter = AnalogFilter('super-gaussian', 3, obj.fmux);
             xfilt_t = zeros(size(obj.x_t));             
 
             xfilt_t(1, :) = MuxFilter.filter(real(obj.x_t(1, :)), obj.fs, true) ...
@@ -60,7 +61,7 @@ classdef Simulation
         end
 
         function obj = demux_central(obj)
-            DemuxFilter = AnalogFilter('super-gaussian', 3, obj.fm);
+            DemuxFilter = AnalogFilter('super-gaussian', 3, obj.fmux);
             obj.y_t = DemuxFilter.filter(real(obj.s_t), obj.fs, true) ...
                 + 1j*DemuxFilter.filter(imag(obj.s_t), obj.fs, true);
         end
