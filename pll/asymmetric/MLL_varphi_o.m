@@ -4,7 +4,7 @@ M = 4;                                    % constellation size
 b = log2(M);                              % bits per symbol
 T_s = 1/56e9;                             % symbol interval (s)
 gamma_s_dB = 10.8;                        % symbol SNR (dB)
-Deltamu = 8e6;                            % beat linewidth (Hz)
+Deltamu = 2e6;                            % beat linewidth (Hz)
 zeta = 1/sqrt(2);
 n_PE = 2;                                   % = 1 if one pol. used for 
                                             % phase estimate
@@ -35,9 +35,9 @@ plot((wnTs/T_s/10e9), phase_error_std, '--', 'LineWidth', 1.5, 'DisplayName', 'N
 %ylabel('$\sigma_{\varepsilon_{o}}$ (degrees)', 'Interpreter', 'latex');
 grid();
 
-%% 3. Case (B): tau_d = 20*T_b
-wnTs = linspace(1e-5, 10e-2, 500);
-tau_d = 100e-12;
+%% 3. Case (B): tau_d = 400 ps
+wnTs = linspace(1e-5, 3e-2, 500);
+tau_d = 400e-12;
 for i=1:length(wnTs)
     wn = wnTs(i)/T_s;
     var_phi(i) = (var_p/(4*zeta*wn*T_s))*Gamma_PN(wn*tau_d, zeta) ...
@@ -49,4 +49,4 @@ phase_error_std = sqrt(var_phi)*(180/pi); % phase error standard deviation (deg)
 hold on; 
 plot(((wnTs/T_s)/10e9), phase_error_std, 'LineWidth', 1.5, 'DisplayName', '\it\tau_{o}\rm = ');
 set(gca, 'FontName', 'Times', 'FontSize', 20);
-ylim([0 10]); xlim([0 1]);
+ylim([0 8]); xlim([0 .5]);

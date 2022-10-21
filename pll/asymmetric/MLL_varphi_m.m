@@ -6,7 +6,7 @@ T_s = 1/56e9;                             % symbol interval (s)
 gamma_s_dB = 10.8;                        % symbol SNR (dB)
 Deltamu = 1e3;                            % beat RF linewidth (Hz)
 zeta = 1/sqrt(2);
-p_0 = 16;                                 % outer reference channel
+p_0 = 12;                                 % outer reference channel
 n_PE = 2;                                   % = 1 if one pol. used for 
                                             % phase estimate
                                             % = 2 if two pol. used for
@@ -38,8 +38,8 @@ grid();
 
 %% 3. Case (B): tau_d = 20*T_b
 %%{
-wnTs = linspace(1e-5, 3e-3, 500);
-tau_d = 100e-12;
+wnTs = linspace(1e-5, 3.5e-3, 500);
+tau_d = 400e-12;
 for i=1:length(wnTs)
     wn = wnTs(i)/T_s;
     var_phi(i) = (var_p/(4*zeta*wn*T_s))*Gamma_PN_p0(wn*tau_d, zeta, p_0) ...

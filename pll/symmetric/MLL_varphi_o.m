@@ -6,7 +6,7 @@ M = 4;                                    % constellation size
 b = log2(M);                              % bits per symbol
 T_s = 1/56e9;                             % symbol interval (s)
 gamma_s_dB = 10.8;                        % symbol SNR (dB)
-Deltamu = 4e6;                            % beat linewidth (Hz)
+Deltamu = 2e6;                            % beat linewidth (Hz)
 zeta = 1/sqrt(2);
 n_PE = 2;
 
@@ -15,7 +15,7 @@ eta_c = compute_eta_c(qammod(0:M-1, M));  % constellation penalty factor
 gamma_s = 10^(gamma_s_dB/10);
 
 %% 1. Sweep Variables
-wnTs = linspace(1e-3, 5e-1, 500);
+wnTs = linspace(1e-5, 1e-1, 500);
 var_phi = zeros(size(wnTs));
 
 %% 2. Case (A): tau_d = 0
@@ -34,8 +34,8 @@ plot(wnTs/T_s/10e9, phase_error_std, '--', 'LineWidth', 1.5, 'DisplayName', '\it
 grid();
 
 %% 3. Case (B): tau_d = non-zero
-wnTs = linspace(1e-5, 6e-2, 500);
-tau_d = 300e-12;
+wnTs = linspace(1e-6, 3e-2, 500);
+tau_d = 400e-12;
 for i=1:length(wnTs)
     wn = wnTs(i)/T_s;
     var_phi(i) = (var_p/(4*zeta*wn*T_s))*Gamma_PN(wn*tau_d, zeta) ...

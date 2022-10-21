@@ -3,10 +3,10 @@ clear; clc;
 M = 4;                                    % constellation size
 b = log2(M);                              % bits per symbol
 T_s = 1/56e9;                             % symbol interval (s)
-gamma_s_dB = 10.7;                        % symbol SNR (dB)
+gamma_s_dB = 10.8;                        % symbol SNR (dB)
 Deltamu = 1e3;                            % beat RF linewidth (Hz)
 zeta = 1/sqrt(2);
-p_0 = 16;                                 % outer reference channel #
+p_0 = 12;                                 % outer reference channel #
 n_PE = 2;
 
 var_p = 2*pi*Deltamu*T_s;                 
@@ -32,10 +32,10 @@ figure;
 plot(wnTs/T_s/10e9, phase_error_std, '--', 'LineWidth', 1.5, 'DisplayName', '\it\tau_{d}\rm = 0');
 grid();
 
-%% 3. Case (B): tau_d = 20*T_b
+%% 3. Case (B): tau_d = 400 ps
 %%{
-wnTs = linspace(1e-10, 3e-3, 500);
-tau_d = 300e-12;
+wnTs = linspace(1e-10, 4e-3, 500);
+tau_d = 400e-12;
 for i=1:length(wnTs)
     wn = wnTs(i)/T_s;
     var_phi(i) = (var_p/(4*zeta*wn*T_s))*Gamma_PN_p0(wn*tau_d, zeta, p_0) ...
