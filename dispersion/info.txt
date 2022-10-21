@@ -1,0 +1,3 @@
+In this folder, 
+fiber.m was developed by Jose K. Perin. Orignal code can be found at https://github.com/jkperin/optical-comm/blob/master/f/fiber.m.
+
