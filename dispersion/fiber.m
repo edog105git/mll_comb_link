@@ -64,12 +64,12 @@ classdef fiber < handle
             rows = {'Length'; sprintf('Attenuation at %.2f nm', lambnm);...
                 sprintf('Total dispersion at %.2f nm', lambnm); 'PMD included?';...
                 'Total DGD'; 'Polarization dependent loss'};
-            Variables = {'L'; 'att'; 'DL'; 'PMD'; 'tauDGD'; 'PDL'};
+            Parameters = {'L'; 'att'; 'DL'; 'PMD'; 'tauDGD'; 'PDL'};
             Values = [self.L/1e3; self.att(lamb); self.D(lamb)*self.L*1e3;...
                 self.PMD; self.tauDGD*1e12; self.PDL];
             Units = {'km'; 'dB/km'; 'ps/nm'; ''; 'ps'; 'dB'};
 
-            Fibertable = table(Variables, Values, Units, 'RowNames', rows);
+            Fibertable = table(Parameters, Values, Units, 'RowNames', rows);
         end
              
         %% Get methods
