@@ -23,7 +23,7 @@ TX_COMB.mod_t = TX_COMB.mod*(TX_COMB.f_m*TX_COMB.T_t);
 P = 100;
 Q = 150;
 
-P_in_total = 1e-3;
+P_in_total = 0.14;
 % 1. Seed-to-comb conversion
 [E_r, E_out] = generate_comb(TX_COMB, P_in_total, P, Q);
 P_r = abs(E_r).^2;
@@ -54,3 +54,4 @@ eta_cc = P_comb_output/P_in_total;                                         % com
 eta_DI = P_DI_output/P_comb_output;                                        % DI efficiency
 eta_FF = (P_lowest*13)/P_DI_output;
 eta_cc*eta_DI*eta_FF*100
+P_lowest
