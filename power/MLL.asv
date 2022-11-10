@@ -1,0 +1,21 @@
+eta_mll = 0.10;
+eta_soa = 0.19;
+P_soa_Tx = 36.63e-3;
+P_soa_LO = 36.63e-3;
+P_Rx_electronics = 2.7;
+eta_CP_Tx = 0.7*0.5*10^(-5.5/10);
+eta_CP_LO = 0.7*0.5*10^(-5.5/10);
+G_Tx = 10^(20/10);
+G_LO = 10^(10/10);
+
+%% Tx
+P_E1_Tx = P_soa_Tx/(G_Tx*eta_CP_Tx*eta_mll);
+P_m_Tx = 200e-3;
+P_E2_Tx = (P_soa_Tx/eta_soa)*(1 - (1/G_Tx));
+
+P_Tx = P_E
+
+%% LO
+P_E1_LO = P_soa_LO/(G_LO*eta_CP_LO*eta_mll);
+P_m_LO = 200e-3;
+P_E2_LO = (P_soa_LO/eta_soa)*(1 - (1/G_LO));
