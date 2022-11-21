@@ -27,6 +27,7 @@ eta_Eo2 = 0.15;
 
 P_E1 = P_o2/(G*eta_oo*eta_Eo1);
 P_E2 = (P_o2/eta_Eo2)*(1 - (1/G));
+P_o1 = (P_o2/(eta_oo*G))*1e3
 
 eta_overall  = P_o2/(P_E1 + P_Em + P_E2);
 eta_overall*100

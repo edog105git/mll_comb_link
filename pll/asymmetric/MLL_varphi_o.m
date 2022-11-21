@@ -31,10 +31,11 @@ phase_error_std = sqrt(var_phi)*(180/pi); % phase error standard deviation (deg)
 
 figure;
 plot((wnTs/T_s/10e9), phase_error_std, '--', 'LineWidth', 1.5, 'DisplayName', 'No Delay');
-%xlabel('$\omega_{n}T_{s}$', 'Interpreter', 'latex'); 
-%ylabel('$\sigma_{\varepsilon_{o}}$ (degrees)', 'Interpreter', 'latex');
 grid();
 
+%% 2(b). Find optimal wn
+[~, min_index] = min(phase_error_std);
+wn_optimal_Mrads = wnTs(min_index)/T_s/10e6
 %% 3. Case (B): tau_d = 400 ps
 wnTs = linspace(1e-5, 3e-2, 500);
 tau_d = 400e-12;

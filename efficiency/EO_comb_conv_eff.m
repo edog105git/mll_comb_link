@@ -23,7 +23,7 @@ TX_COMB.mod_t = TX_COMB.mod*(TX_COMB.f_m*TX_COMB.T_t);
 P = 100;
 Q = 150;
 
-P_in_total = 0.14;
+P_in_total = 0.014;
 % 1. Seed-to-comb conversion
 [E_r, E_out] = generate_comb(TX_COMB, P_in_total, P, Q);
 P_r = abs(E_r).^2;
@@ -47,11 +47,11 @@ comb_right_DI = P_out((2+P+1):2:(12+P+1));
 
 P_DI_output = sum(comb_left_DI) + comb_center_DI + sum(comb_right_DI);
 
-P_lowest = min(min(min(comb_left_DI), min(comb_right_DI)), comb_center_DI);
+P_lowest = min(min(min(comb_left_DI), min(comb_right_DI)), comb_center_DI)
 % 3. Compute efficiencies
 eta_WPE = 0.1;                                                             % wall-plug efficiency (value taken from literature)
 eta_cc = P_comb_output/P_in_total;                                         % comb conversion efficiency (power in center 25 channels / total seed laser power)
 eta_DI = P_DI_output/P_comb_output;                                        % DI efficiency
 eta_FF = (P_lowest*13)/P_DI_output;
-eta_cc*eta_DI*eta_FF*100
-P_lowest
+eta_cc*eta_DI*eta_FF*100;
+P_lowest;

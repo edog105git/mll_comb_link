@@ -13,7 +13,7 @@ N0 = (30e-12)^2;
 R = 1;
 % 0(e). Amplifiers
 G1_dB = 20; G1 = 10^(G1_dB/10);
-GLO_dB = 10; GLO = 10^(GLO_dB/10);
+GLO_dB = 12; GLO = 10^(GLO_dB/10);
 Fn1_dB = 7; Fn1 = 10^(Fn1_dB/10);
 FnLO_dB = 7; FnLO = 10^(FnLO_dB/10);
 % 0(f). System losses
@@ -22,7 +22,7 @@ eta2_dB = -8; eta2 = 10^(eta2_dB/10);
 eta3_dB = -6.3; eta3 = 10^(eta3_dB/10);
 eta4_dB = -10; eta4 = 10^(eta4_dB/10);
 eta1LO_dB = -5.5; eta1LO = 10^(eta1LO_dB/10);
-eta2LO_dB = -1.5; eta2LO = 10^(eta2LO_dB/10);
+eta2LO_dB = -3.5; eta2LO = 10^(eta2LO_dB/10);
 % 0(g). Signal parameters
 lambda = 1310e-9;
 omega_0 = (2*pi*c)/lambda;
